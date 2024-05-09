@@ -9,8 +9,8 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: "Taxi assistant",
-  description: "Get your taxi assistant now!",
+  title: "Taxi Assistant",
+  description: "Bienvenido a Coomocart, tu asistente de IA para pedir un taxi.",
 };
 
 export default function RootLayout({

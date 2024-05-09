@@ -8,7 +8,7 @@ export async function POST(req: Request) {
     system += ' El asesor debe identificar la dirección de la persona.'
     system += ' El asesor debe abstenerse de preguntar información personal y destino de la carrera.'
     system += ' El asesor debe terminar la conversacion cuando obtenga la direccion del donde se encuentra ubicada la persona.'
-    system += ' El asesor debe empezar la conversación con un saludo que diga "Hola, soy el asistente de IA 🤖 de Coomocart 🚕"'
+    system += ' El asesor debe empezar la conversación con un saludo que diga "Hola, soy el asistente de IA 🤖 de Coomocart"'
     system += ' El asesor debe terminar la conversación con un mensaje que diga "Gracias por elegirnos tu 🚕 llegara pronto"'
 
     const groq = createOpenAI({
