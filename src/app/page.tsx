@@ -10,7 +10,7 @@ export default function Chat() {
 
   return (
     <div className='flex flex-col justify-between gap-2 py-4 px-2 w-full max-w-md m-auto h-screen'>
-      <Messages />
+      <Messages messages={messages} />
 
       <div className='sticky bottom-0'>
         <form
