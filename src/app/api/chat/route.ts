@@ -1,9 +1,9 @@
-import { generateText, tool } from 'ai';
+// import { generateText, tool } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
 import { StreamingTextResponse, streamText } from 'ai';
-import { z } from 'zod';
+// import { z } from 'zod';
 import type { CoreMessage } from 'ai';
-import { sendEmail } from '@/actions/sendEmail';
+// import { sendEmail } from '@/actions/sendEmail';
 
 export async function POST(req: Request) {
     const { messages } = await req.json() as { messages: CoreMessage[] };
@@ -21,31 +21,31 @@ export async function POST(req: Request) {
         apiKey: process.env.GROQ_API_KEY,
     });
 
-    const userPrompt = messages.filter((message: any) => message.role === 'user').map((message: any) => message.content).join(' ')
+    // const userPrompt = messages.filter((message: any) => message.role === 'user').map((message: any) => message.content).join(' ')
 
-    const testing = await generateText({
-        model: groq('llama3-8b-8192'),
-        tools: {
-            taxi: tool({
-                description: 'Send a taxi notification',
-                parameters: z.object({
-                    address: z.string({
-                        description: 'The address where the person is located',
-                        required_error: 'Please provide the address',
-                    }).describe('La dirección donde se encuentra la persona'),
-                    email: z.string().describe('El email de la persona'),
-                    name: z.string().describe('El nombre de la persona'),
-                }),
-                execute: async ({ address, email, name }) => ({
-                    address,
-                    email,
-                    name,
-                    sendMail: sendEmail({ address, email, name }),
-                }),
-            }),
-        },
-        prompt: userPrompt,
-    });
+    // const testing = await generateText({
+    //     model: groq('llama3-8b-8192'),
+    //     tools: {
+    //         taxi: tool({
+    //             description: 'Send a taxi notification',
+    //             parameters: z.object({
+    //                 address: z.string({
+    //                     description: 'The address where the person is located',
+    //                     required_error: 'Please provide the address',
+    //                 }).describe('La dirección donde se encuentra la persona'),
+    //                 email: z.string().describe('El email de la persona'),
+    //                 name: z.string().describe('El nombre de la persona'),
+    //             }),
+    //             execute: async ({ address, email, name }) => ({
+    //                 address,
+    //                 email,
+    //                 name,
+    //                 sendMail: sendEmail({ address, email, name }),
+    //             }),
+    //         }),
+    //     },
+    //     prompt: userPrompt,
+    // });
 
     const result = await streamText({
         model: groq('llama3-8b-8192'),
