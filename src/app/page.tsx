@@ -1,10 +1,7 @@
 "use client";
 import { useChat } from "ai/react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { Messages } from "@/components/message/messages";
-import { Separator } from "@/components/ui/separator";
-import Prompt from "@/components/message/prompt";
+import { Prompt } from "@/components/message/prompt";
 
 export default function Chat() {
   const { messages, input, handleInputChange, handleSubmit, isLoading } =

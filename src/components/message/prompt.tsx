@@ -10,7 +10,7 @@ type Props = {
   isLoading: boolean;
 };
 
-export default function Prompt({
+export function Prompt({
   input,
   handleInputChange,
   handleSubmit,
