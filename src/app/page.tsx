@@ -1,22 +1,11 @@
 "use client";
-import { useChat } from "ai/react";
-import { Messages } from "@/components/message/messages";
-import { Prompt } from "@/components/message/prompt";
+import Bot from "@/components/message";
+import { BotProvider } from "@/providers/BotContext";
 
-export default function Chat() {
-  const { messages, input, handleInputChange, handleSubmit, isLoading } =
-    useChat();
-
+export default function HomePage() {
   return (
-    <div className='mt-14 flex flex-col justify-between gap-2 py-4 px-2 w-full max-w-md m-auto h-screen'>
-      <Messages messages={messages} />
-
-      <Prompt
-        input={input}
-        handleInputChange={handleInputChange}
-        handleSubmit={handleSubmit}
-        isLoading={isLoading}
-      />
-    </div>
+    <BotProvider>
+      <Bot />
+    </BotProvider>
   );
 }
