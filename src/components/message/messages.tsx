@@ -4,13 +4,11 @@ import { Bubble } from "@/components/message/bubble";
 import { BubbleSkeleton } from "@/components/message/bubble-skeleton";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Hero } from "@/components/message/hero";
-import type { Message } from "ai/react";
+import { useBot } from "@/hooks/useBot";
 
-type Props = {
-  messages: Message[];
-};
+export function Messages() {
+  const { messages } = useBot();
 
-export function Messages({ messages }: Props) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {

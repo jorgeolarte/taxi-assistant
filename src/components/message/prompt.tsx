@@ -1,21 +1,12 @@
 "use client";
+import { useBot } from "@/hooks/useBot";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
-type Props = {
-  input: string;
-  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  isLoading: boolean;
-};
+export function Prompt() {
+  const { input, handleInputChange, handleSubmit, isLoading } = useBot();
 
-export function Prompt({
-  input,
-  handleInputChange,
-  handleSubmit,
-  isLoading,
-}: Props) {
   return (
     <div className='sticky bottom-4 bg-white'>
       <Separator className='mx-auto mb-4' />
