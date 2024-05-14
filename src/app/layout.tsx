@@ -3,6 +3,7 @@ import { Montserrat as FontSans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Navbar } from "@/components/navbar";
+import { BotProvider } from "@/providers/BotContext";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -10,8 +11,8 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: "Taxi Assistant",
-  description: "Bienvenido a Coomocart, tu asistente de IA para pedir un taxi.",
+  title: "Bot Assistant",
+  description: "Asistente de IA",
 };
 
 export default function RootLayout({
@@ -27,8 +28,10 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <Navbar />
-        {children}
+        <BotProvider>
+          <Navbar />
+          {children}
+        </BotProvider>
       </body>
     </html>
   );

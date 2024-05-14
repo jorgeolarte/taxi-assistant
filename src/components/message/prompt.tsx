@@ -3,25 +3,36 @@ import { useBot } from "@/hooks/useBot";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { FormEvent } from "react";
 
 export function Prompt() {
-  const { input, handleInputChange, handleSubmit, isLoading } = useBot();
+  const { botType, input, handleInputChange, handleSubmit, isLoading } =
+    useBot();
+
+  if (botType === "notFound") return null;
 
   return (
     <div className='sticky bottom-4 bg-white'>
       <Separator className='mx-auto mb-4' />
       <form
-        onSubmit={handleSubmit}
+        onSubmit={(event: FormEvent<HTMLFormElement>) =>
+          handleSubmit(event, {
+            options: {
+              body: { botType },
+            },
+          })
+        }
         className='flex flex-row w-full m-auto max-w-sm items-center gap-2'
       >
         <Input
           type='text'
-          placeholder='Dime, dónde hago llegar tu taxi?'
+          placeholder='Dime, ¿en qué puedo ayudarte?'
           value={input}
           onChange={handleInputChange}
           disabled={isLoading}
           className=''
         />
+        <Input type='hidden' name='options' value={botType} />
         <Button variant='outline' type='submit' disabled={isLoading}>
           <svg
             xmlns='http://www.w3.org/2000/svg'
